@@ -2,19 +2,16 @@ import { MenuItem } from "@/types/caso2";
 import {
     Home,
     BarChart3,
-    TrendingUp,
     Package,
     ClipboardList,
     Archive,
-    Link,
-    CheckSquare,
-    FolderOpen
+  Users
 } from "lucide-react";
 
 export const menuItems: MenuItem[] = [
     {
         id: "home",
-        label: "Home",
+        label: "Inicio",
         icon: Home,
         href: "/",
     },
@@ -24,47 +21,32 @@ export const menuItems: MenuItem[] = [
         icon: BarChart3,
         href: "/dashboard",
     },
-    {
-        id: "analytics",
-        label: "Analytics",
-        icon: TrendingUp,
-        href: "/analytics",
-    },
+
     {
         id: "products",
-        label: "Products",
+        label: "Productos",
         icon: Package,
         children: [
             {
-                id: "orders",
-                label: "Orders",
+                id: "categories",
+                label: "Categorias",
                 icon: ClipboardList,
                 href: "/caso2",
             },
             {
                 id: "inventory",
-                label: "Inventory",
+                label: "Inventario",
                 icon: Archive,
                 href: "/products/inventory",
             },
-            {
-                id: "integrations",
-                label: "Integrations",
-                icon: Link,
-                href: "/products/integrations",
-            },
+
         ],
     },
+
     {
-        id: "task",
-        label: "Task",
-        icon: CheckSquare,
-        href: "/task",
-    },
-    {
-        id: "files",
-        label: "Files",
-        icon: FolderOpen,
-        href: "/files",
+        id: "users",
+        label: "Usuarios",
+        icon: Users,
+        href: "/user",
     },
 ];

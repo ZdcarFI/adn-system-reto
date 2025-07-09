@@ -5,7 +5,7 @@ import {useTheme} from "next-themes"
 import {MenuItem} from "./MenuItem"
 import {useMediaQuery} from "@/hooks/useMediaQuery"
 import {menuItems} from "@/data/caso2"
-import {Menu, X, Moon, Sun, Search, ChevronLeft} from "lucide-react"
+import {Menu, X, Moon, Sun, ChevronLeft} from "lucide-react"
 
 export function Sidebar() {
     const [isCollapsed, setIsCollapsed] = useState(false)
@@ -39,8 +39,8 @@ export function Sidebar() {
 
     const Logo = ({showText = true}) => (
         <div className="flex items-center">
-            <div className="w-8 h-8 bg-white dark:bg-black rounded-full flex items-center justify-center mr-3">
-                <span className="text-gray-900 dark:text-white font-bold text-sm">G</span>
+            <div className="w-8 h-8 bg-black dark:bg-white rounded-full flex items-center justify-center mr-3">
+                <span className="text-white dark:text-gray-900 font-bold text-sm">G</span>
             </div>
             {showText && <span className="font-bold text-lg text-gray-900 dark:text-white">Ghostly</span>}
         </div>
@@ -51,7 +51,7 @@ export function Sidebar() {
     return (
         <>
             {isMobile && isMobileMenuOpen && (
-                <div className="fixed inset-0 bg-black bg-opacity-50 z-30" onClick={closeMobileMenu}/>
+                <div className="fixed inset-0 bg-black/50  z-30" onClick={closeMobileMenu}/>
             )}
 
             {isMobile && (
@@ -83,23 +83,9 @@ export function Sidebar() {
                         </div>
                     )}
 
-                    {(!isCollapsed || isMobile) && (
-                        <div className="px-4 py-4">
-                            <div className="relative">
-                                <input
-                                    type="text"
-                                    placeholder="Search..."
-                                    className="w-full px-3 py-2 pl-10 text-sm rounded-lg border bg-gray-50 dark:bg-gray-800 border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:border-gray-400 dark:focus:border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
-                                />
-                                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                    <Search size={16} className="text-gray-400"/>
-                                </div>
-                            </div>
-                        </div>
-                    )}
+                    <nav className={`flex-1 px-4 py-2 space-y-1 ${!isMobile && isCollapsed ? "flex flex-col items-center" : ""}`}>
 
-                    <nav className={`flex-1 px-4 py-2 space-y-1 ${isCollapsed && "flex flex-col items-center"}`}>
-                        {menuItems.map((item) => (
+                    {menuItems.map((item) => (
                             <MenuItem
                                 key={item.id}
                                 item={item}
@@ -108,6 +94,7 @@ export function Sidebar() {
                                 onNavigate={closeMobileMenu}
                             />
                         ))}
+
                     </nav>
 
                     {!isMobile && (
